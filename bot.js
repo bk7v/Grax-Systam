@@ -12,7 +12,7 @@ client.on('ready', () => {
 
 const sWlc = {}
 client.on('message', message => {
-var prefix = "!";
+var prefix = "S!";
 if(message.channel.type === "dm") return;
 if(message.author.bot) return;
   if(!sWlc[message.guild.id]) sWlc[message.guild.id] = {
