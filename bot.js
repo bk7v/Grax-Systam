@@ -62,6 +62,36 @@ lient.on('message', message => {
 
 
 
+
+
+
+client.on('message', message => {
+         if(message.content === prefix + "^^closeroom") {
+                             if(!message.channel.guild) return message.reply('** This command only for servers**');
+  
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
+                message.channel.overwritePermissions(message.guild.id, {
+              SEND_MESSAGES: false
+  
+                }).then(() => {
+                    message.reply("**__تم تقفيل الشات__ ✅ **")
+                });
+                  }
+      if(message.content === prefix + "^^openroom") {
+                          if(!message.channel.guild) return message.reply('** This command only for servers**');
+  
+     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__ليس لديك صلاحيات__**');
+                message.channel.overwritePermissions(message.guild.id, {
+              SEND_MESSAGES: true
+  
+                }).then(() => {
+                    message.reply("**__تم فتح الشات__✅**")
+                });
+      }
+         
+});
+
+
 lient.on('message', message => {
     if(message.content.toLowerCase().startsWith(`discord.gg`)){
         message.member.addRole(message.guild.roles.find('name', 'Muted'));
@@ -334,6 +364,57 @@ const secreT = [
   "**نحن نكتب ما لا نستطيع ان نقول وما نريد ان يكون**.",
 ]
  
+
+
+
+
+ 
+
+client.on('guildMemberAdd', member => {
+    var embed = new Discord.RichEmbed()
+    .setThumbnail(member.user.avatarURL)
+  .addField("***شكرا الانضمامك الينا***" ,member.user.username )
+    .setDescription('***بكل حب واحترام وشوق نستقبلك ونتمنى لك قضآء أجمل اللحظات ولآوقات معنا***')
+    .setColor('RANDOM')
+    .setImage('http://www.imgion.com/images/01/Welcome-buddy.jpg')
+var channel =member.guild.channels.find('name', 'welcome')
+if (!channel) return;
+channel.send({embed : embed});
+});
+
+
+
+
+client.on("guildMemberAdd", member => {
+  member.createDM().then(function (channel) {
+  return channel.send(`:rose:  ولكم نورت السيرفر:rose: 
+:crown:اسم العضو  ${member}:crown:  
+انت العضو رقم ${member.guild.memberCount} `) 
+}).catch(console.error)
+})
+
+
+
+client.on('guildMemberAdd', member => {
+  member.guild.fetchInvites().then(guildInvites => {
+    const ei = invites[member.guild.id];
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    const inviter = client.users.get(invite.inviter.id);
+    const xkiller = member.guild.channels.find("name", "welcome");
+     xkiller.send(`<@${member.user.id}> تمت الدعوه من <@${inviter.id}>`);
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
  
  client.on('message', message => {
    if (message.content.startsWith("^^خواطر")) {
@@ -390,6 +471,10 @@ client.on("message", message => {
  
 👑『اوامر ادارية』👑
  
+👑^^openroom 『لفتح اشات』
+
+👑^^closeroom 『لاغلاق الشات』
+
 👑^^rooms 『لمعرفه عدد رومات السيرفر』
  
 👑^^ban 『لتعطي شخص باند』
@@ -408,6 +493,7 @@ client.on("message", message => {
  
 👑^^start 『بدا القيف اواي』
 
+👑 وخلاص يتفعل الترحيب لحاله welcome سو روم وسمه   
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
  
 🎲『القرعة』🎲
