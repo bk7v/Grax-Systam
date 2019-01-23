@@ -47,7 +47,7 @@ client.on("message", message => {
  
  
 
-lient.on('message', message => {
+ client.on('message', message => {
     if(message.content.toLowerCase().startsWith(`discord.gg`)){
         message.member.addRole(message.guild.roles.find('name', 'Muted'));
         var embed = new Discord.RichEmbed()
