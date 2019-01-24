@@ -75,10 +75,6 @@ client.on('guildCreate', guild => {
 
 
 
-client.on('guildMemberAdd', member=> {
-    member.setNickname(`Grax|| ${member.user.username}`)
-});
-	
 	
 
 	
