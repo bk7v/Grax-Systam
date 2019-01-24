@@ -75,6 +75,189 @@ client.on('guildCreate', guild => {
 
 
 
+client.on('guildMemberAdd', member=> {
+    member.setNickname(`Grax|| ${member.user.username}`)
+});
+	
+	
+
+	
+client.on('guildMemberAdd', member=> {
+    var role = member.guild.roles.find("name","𝐌𝐄𝐌𝐁𝐄𝐑𝐒");
+    member.addRole(role);
+});
+
+
+
+client.on("message", msg => {// الحقوق محفوظ لذا سيرفر ناروكس ديفAll CopyRight For Narox Dev
+    if(msg.author.bot) return;
+if(msg.channel.type === 'dm') return;
+
+let p = "^^";//البرفكس
+let msgarray = msg.content.split(" ");
+let cmd = msgarray[0];
+let args = msgarray.slice(1);
+
+if(cmd === `${p}report`){
+
+
+    let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+if(!rUser) return msg.channel.send("Couldn't find users.");
+    let reason = args.join(" ").slice(22);
+
+
+let reportembed = new Discord.RichEmbed()
+.setDescription("Reports")
+.setColor("BLACK")
+.addField("Report User", `${rUser} with ID: ${rUser.id}`)
+.addField("Report By", `${msg.author} with ID: ${msg.author.id}`)
+.addField("Channel", msg.channel)
+.addField("Time", msg.createdAt)
+.addField("Reason",`${reason}`)
+
+
+let reportchannel = msg.guild.channels.find(`name`,"report")
+if(!reportchannel) return msg.channel.send("Couldn't find `report` channel. ")
+
+msg.delete().catch(O_o=>{});
+reportchannel.send(reportembed);
+    return;
+}
+});
+
+
+
+
+
+
+var config = {
+  events: [
+    {type: "CHANNEL_CREATE", logType: "CHANNEL_CREATE", limit: 3 , delay: 3000},
+    {type: "CHANNEL_DELETE", logType: "CHANNEL_DELETE", limit: 2, delay: 3000},
+    {type: "GUILD_MEMBER_REMOVE", logType: "MEMBER_KICK", limit: 3, delay: 3000},
+    {type: "GUILD_BAN_ADD", logType: "MEMBER_BAN_ADD", limit: 3, delay: 3000}
+  ]
+}
+client.on("raw", (packet)=> {
+  let {t, d} = packet, type = t, {guild_id} = data = d || {};
+  if (type === "READY") {
+    client.startedTimestamp = new Date().getTime();
+    client.captures = [];
+  }
+  let event = config.events.find(anEvent => anEvent.type === type);
+  if (!event) return;
+  let guild = client.guilds.get(guild_id);
+  if (!guild) return;
+  guild.fetchAuditLogs({limit : 1, type: event.logType})
+    .then(eventAudit => {
+      let eventLog = eventAudit.entries.first();
+      if (!eventLog) return;
+      let executor = eventLog.executor;
+      guild.fetchAuditLogs({type: event.logType, user: executor})
+        .then((userAudit, index) => {
+          let uses = 0;
+          userAudit.entries.map(entry => {
+            if (entry.createdTimestamp > client.startedTimestamp && !client.captures.includes(entry.id)) uses += 1;
+          });
+          setTimeout(() => {
+            client.captures.push(index);
+          }, event.delay || 2000)
+          if (uses >= event.limit) {
+            client.emit("reachLimit", {
+              user: userAudit.entries.first().executor,
+              member: guild.members.get(executor.id),
+              guild: guild,
+              type: event.type,
+            })
+          }
+        }).catch(console.error)
+    }).catch(console.error)
+});
+client.on("reachLimit", (limit)=> {
+  let log = limit.guild.channels.find( channel => channel.name === "log");
+  log.send(limit.user.username+"\ try to hack !! @everyone !!");
+  limit.guild.owner.send(limit.user.username+"\ حاول التهكير الحقق (!)")
+  limit.member.roles.map(role => {
+    limit.member.removeRole(role.id)
+    .catch(log.send)
+  });
+});
+
+
+
+
+
+client.on("message", msg => { //Narox Dev
+    if(msg.author.bot) return;
+    if(msg.channel.type === 'dm') return;
+  let prefix = '^^'; //البرفكس
+  let msgarray = msg.content.split(" ");
+  let cmd = msgarray[0];
+  let args = msgarray.slice(1);
+  if(cmd === `${prefix}warn`){//الامر
+    
+    
+  
+    let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));
+  if(!rUser) return msg.channel.send("Couldn't find users.");
+      let reason = args.join(" ").slice(22);
+  
+      let reportembed = new Discord.RichEmbed()
+      .setDescription("Warn")
+      .setColor("BLACK")
+      .addField("Warn User", `${rUser} with ID: ${rUser.id}`)
+      .addField("Warn By", `${msg.author} with ID: ${msg.author.id}`)
+      .addField("Channel", msg.channel)
+      .addField("Time", msg.createdAt)
+      .addField("Reason",`${reason}`)
+      
+      
+      let reportchannel = msg.guild.channels.find(`name`,"warn-log"); //حط هنا اسم الروم الي يوريك بعض المعلومات
+      if(!reportchannel) return msg.channel.send("Couldn't find `warn-log` channel. "); //ط هنا اسم الروم الي يوريك بعض المعلومات
+      
+      msg.delete().catch(O_o=>{});
+      reportchannel.send(reportembed);
+      let role = msg.guild.roles.find(`name`, 'Warn'); 
+      if(!role) return msg.guild.channel.send("Could't find `Warn` role."); 
+      rUser.addRole(role);
+      
+          return;
+      }
+      });
+
+
+
+
+client.on('message', message => {//Mrx - Dev
+    if (message.content.startsWith(prefix + '^^sug')) {//Mrx - Dev
+        if (message.author.bot) return//Mrx - Dev
+        if (!message.guild) return message.reply('**:x: This Commands Just In Server**').then(v => {v.react('❌')})//Mrx - Dev
+        var args =  message.content.split(' ').slice(1).join(' ')//Mrx - Dev
+        if (!args) return message.reply('Type You Suggestion').then(c => {c.delete(5000)})//Mrx - Dev
+        let Room = message.guild.channels.find(`name`, "suggestions")//Mrx - Dev
+        if (!Room) return message.channel.send("Can't find suggestions channel.").then(d => d.react('❌'))//Mrx - Dev
+        let embed = new Discord.RichEmbed()//Mrx - Dev
+        .setColor('RANDOM')//Mrx - Dev
+        .setAuthor(`Vote on ${message.author.username}'s suggestion`, message.author.avatarURL)//Mrx - Dev
+       .addField('**Suggestion**',`${args}`)//Mrx - Dev
+       .setThumbnail(message.author.avatarURL)//Mrx - Dev
+       .setFooter(`ID: ${message.author.id}`)//Mrx - Dev
+       Room.sendEmbed(embed).then(c => {//Mrx - Dev
+           c.react('✅').then(() => //Mrx - Dev
+               c.react('❌'))//Mrx - Dev
+           
+       }).catch(e => console.error(e)//Mrx - Dev
+       )
+   }//Mrx - Dev
+});//Mrx - Dev
+
+
+
+
+
+
+
+
 
 
 
@@ -482,6 +665,10 @@ client.on("message", message => {
  
 💎^^animal  『كود لي اضهار صور  للحيوانات』
  
+💎^^report 『عشان تبلغ علي خطا في السيرفر او علي شخصة』
+
+💎^^sug 『اذا عندك اقتراح للسيرفر』
+
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
  
 👑『اوامر ادارية』👑
@@ -611,6 +798,9 @@ client.on("message", message => {
  
 👑^^rooms 『لمعرفه عدد رومات السيرفر』
  
+👑^^openroom 『لفتح اشات』
+
+👑^^closeroom 『لاغلاق الشات』
  
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
  
@@ -671,6 +861,9 @@ client.on("message", message => {
  
 💎^^animal  『كود لي اضهار صور  للحيوانات』
  
+💎^^report 『عشان تبلغ علي خطا في السيرفر او علي شخصة』
+
+💎^^sug 『اذا عندك اقتراح للسيرفر』
  
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
      
