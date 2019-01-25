@@ -1450,7 +1450,6 @@ client.on('message', message=>{
  
 client.on('message', message => {
  if (message.content.startsWith("ترحيب 1")) {
-	     let channel = member.guild.channels.find('name', 'welcome');
                                  var mentionned = message.mentions.users.first();
              var mentionavatar;
                if(mentionned){
@@ -1478,7 +1477,6 @@ client.on('message', message => {
  
 client.on('message', message => {
  if (message.content.startsWith("ترحيب 2")) {
-	     let channel = member.guild.channels.find('name', 'welcome');
                                  var mentionned = message.mentions.users.first();
              var mentionavatar;
                if(mentionned){
@@ -1506,7 +1504,6 @@ client.on('message', message => {
  
 client.on('message', message => {
  if (message.content.startsWith("ترحيب 3")) {
-	     let channel = member.guild.channels.find('name', 'welcome');
                                  var mentionned = message.mentions.users.first();
              var mentionavatar;
                if(mentionned){
@@ -1531,10 +1528,9 @@ client.on('message', message => {
   }
 });
  
- 
+   let channel = member.guild.channels.find('name', 'welcome');
 client.on('message', message => {
  if (message.content.startsWith("ترحيب 4")) {
-	     let channel = member.guild.channels.find('name', 'welcome');
                                  var mentionned = message.mentions.users.first();
              var mentionavatar;
                if(mentionned){
@@ -1559,10 +1555,9 @@ client.on('message', message => {
   }
 });
  
- 
+   let channel = member.guild.channels.find('name', 'welcome');
 client.on('message', message => {
  if (message.content.startsWith("ترحيب 5")) {
-	     let channel = member.guild.channels.find('name', 'welcome');
                                  var mentionned = message.mentions.users.first();
              var mentionavatar;
                if(mentionned){
