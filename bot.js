@@ -1587,10 +1587,9 @@ client.on('message', message => {
   }
 });
  
- 
+   let channel = member.guild.channels.find('name', 'welcome');
 client.on('message', message => {
  if (message.content.startsWith("ترحيب 6")) {
-	     let channel = member.guild.channels.find('name', 'welcome');
                                  var mentionned = message.mentions.users.first();
              var mentionavatar;
                if(mentionned){
@@ -1614,11 +1613,11 @@ client.on('message', message => {
    message.channel.sendEmbed(EsTeKnAN);
   }
 });
- 
- 
+
+
+let channel = member.guild.channels.find('name', 'welcome');
 client.on('message', message => {
  if (message.content.startsWith("ترحيب 7")) {
-	     let channel = member.guild.channels.find('name', 'welcome');
                                  var mentionned = message.mentions.users.first();
              var mentionavatar;
                if(mentionned){
@@ -1643,11 +1642,10 @@ client.on('message', message => {
   }
 });
  
- 
+ let channel = member.guild.channels.find('name', 'welcome');
 client.on('message', message => {
  if (message.content.startsWith("ترحيب 8")) {
-	     let channel = member.guild.channels.find('name', 'welcome');
-                                 var mentionned = message.mentions.users.first();
+             var mentionned = message.mentions.users.first();
              var mentionavatar;
                if(mentionned){
                    var mentionavatar = mentionned;
