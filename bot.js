@@ -1582,6 +1582,7 @@ client.on('message', message => {
  
 
 client.on('message', message => {
+	  let channel = member.guild.channels.find('name', 'welcome');
  if (message.content.startsWith("ترحيب 6")) {
                                  var mentionned = message.mentions.users.first();
              var mentionavatar;
