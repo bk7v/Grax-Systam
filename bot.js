@@ -64,7 +64,7 @@ client.on("message", message => {
 client.on('guildCreate', guild => {
   var embed = new Discord.RichEmbed()
   .setColor(0x5500ff)
-  .setDescription(`**شكراً لك لإضافه البوت الى سيرفرك F5R BOT THE BEST**`)
+  .setDescription(`**شكراً لك لإضافه البوت الى سيرفرك Grax BOT THE BEST**`)
       guild.owner.send(embed)
 });
 
@@ -79,7 +79,7 @@ client.on('guildCreate', guild => {
 
 	
 client.on('guildMemberAdd', member=> {
-    var role = member.guild.roles.find("name","𝐌𝐄𝐌𝐁𝐄𝐑𝐒");
+    var role = member.guild.roles.find("name","");
     member.addRole(role);
 });
 
@@ -112,7 +112,7 @@ let reportembed = new Discord.RichEmbed()
 .addField("Reason",`${reason}`)
 
 
-let reportchannel = msg.guild.channels.find(`name`,"report")
+let reportchannel = msg.guild.channels.find(`name`,"reports")
 if(!reportchannel) return msg.channel.send("Couldn't find `report` channel. ")
 
 msg.delete().catch(O_o=>{});
@@ -1232,12 +1232,175 @@ client.on("message", message => {
 });
  
  
- client.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', 'welcome');
-  if (!channel) return;
-  channel.send(`***بكل حب واحترام وشوق نستقبلك ونتمنى لك قضآء أجمل اللحظات ولآوقات معنا حياك الله***, ${member}`);
+var prefix = "^^"
  
+client.on('message',async message => {
+  if(message.channel.type === 'dm') return;
+  if(message.author.bot) return;
+  let args = message.content.split(' ');
+  if(args[0] === `${prefix}bc1`) {
+  if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('- **أنت لا تملك الصلاحيات اللازمة لأستخدام هذا الأمر**');
+  if(!args[1]) return message.channel.send('- **يجب عليك كتابة الرسالة بعد الأمر**');
+
+  let msgCount = 0;
+  let errorCount = 0;
+  let successCount = 0;
+    let status;
+    if(msgCount === message.guild.memberCount) {
+        status = 'Sent';
+    } else if(msgCount !== message.guild.memberCount) {
+        status = 'Sending';
+    }
+  message.channel.send(`**- [ 🔖 :: ${msgCount} ] ・عدد الرسائل المرسلة**\n**- [ 📥 :: ${successCount} ] ・عدد الرسائل المستلمة**\n**- [ 📤 :: ${errorCount} ]・عدد الرسائل الغير مستلمة\n- [ ▫ :: ${status} ]・حالة الرسائل المرسلة**`).then(msg => {
+    message.guild.members.forEach(g => {
+      g.send(args.slice(1).join(' ')).then(() => {
+        successCount++;
+        msgCount++;
+                if(!msg) return;
+        msg.edit(`**- [ 🔖 :: ${msgCount} ] ・عدد الرسائل المرسلة**\n**- [ 📥 :: ${successCount} ] ・عدد الرسائل المستلمة**\n**- [ 📤 :: ${errorCount} ]・عدد الرسائل الغير مستلمة\n- [ ▫ :: ${status} ]・حالة الرسائل المرسل**`);
+      }).catch(e => {
+        errorCount++;
+        msgCount++;
+                if(!msg) return;
+        msg.edit(`**- [ 🔖 :: ${msgCount} ] ・عدد الرسائل المرسلة**\n**- [ 📥 :: ${successCount} ] ・عدد الرسائل المستلمة**\n**- [ 📤 :: ${errorCount} ]・عدد الرسائل الغير مستلمة\n- [ ▫ :: ${status} ]・حالة الرسائل المرسل**`);
+      });
+    });
+  });
+}
 });
+
+
+
+client.on("message", message => { 
+    if(message.author.bot) return;
+    if(message.channel.type === 'dm') return;
+  let prefix = '^^'; 
+  let messagearray = message.content.split(" ");
+  let rank = message.guild.member(message.author).roles.find('name', 'Warn');
+
+  let cmd = messagearray[0];
+  let args = messagearray.slice(1);
+  if(cmd === `${prefix}warn`){
+
+    if (!rank) return message.channel.send('**You Dont Have Perm**');
+    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!rUser) return message.channel.send("**Couldn't find user**");
+      let reason = args.join(" ").slice(22);
+      if(!reason) return message.channel.send('**What Is The Reason**');
+  
+      let reportembed = new Discord.RichEmbed()
+      .setTitle('~~~~~~~~~~~~~~~New Warn~~~~~~~~~~~~~~~')
+      .setThumbnail(`${message.author.avatarURL}`)
+      .setColor("BLACK")
+      .addField("Warned User", `[${rUser}]`)
+      .addField("Warned By", `[${message.author}]`)
+      .addField("Channel", `[${message.channel}]`)
+      .addField("Reason",`[${reason}]`)
+      
+      
+      let WarnChannel = message.guild.channels.find(`name`,"warn-log");
+      
+      message.delete().catch(O_o=>{});
+      WarnChannel.send(reportembed);
+      let role12 = message.guild.roles.find('name', 'warn');
+      rUser.addRole(role12);
+      
+          return;
+      }
+      });
+
+
+
+client.on('message',message =>{   ///Toxic Codes
+    var prefix = "^^";
+    if(message.content.startsWith(prefix + 'topinvinvite')) {  ///Toxic Codes
+  message.guild.fetchInvites().then(i =>{   ///Toxic Codes
+  var invites = [];
+   
+  i.forEach(inv =>{
+    var [invs,i]=[{},null];
+     
+    if(inv.maxUses){
+        invs[inv.code] =+ inv.uses+"/"+inv.maxUses;
+    }else{
+        invs[inv.code] =+ inv.uses;
+    }
+        invites.push(`invite: ${inv.url} inviter: ${inv.inviter} \`${invs[inv.code]}\`;`);
+   
+  });
+  var embed = new Discord.RichEmbed()
+  .setColor("#000000")
+  .setDescription(`${invites.join(`\n`)+'\n\n**By:** '+message.author}`)
+  .setThumbnail("https://a.top4top.net/p_1120787ab1.png")
+           message.channel.send({ embed: embed });  
+   
+  });  ///Toxic Codes
+   
+    }   ///Toxic Codes
+  });  ///Toxic Codes
+
+
+
+
+
+client.on('message', message => { ///Toxic Codes
+    if (message.author.bot) return;
+    if (message.content.indexOf('^^un') === 0) {
+        var text = message.content.substring(1);
+        
+        var reversed = '';
+        var i = text.length;
+        
+        while (i > 0) {
+            reversed += text.substring(i - 1, i);
+            i--;
+        }
+        message.reply(reversed);
+    }
+});
+
+
+
+
+lient.on('guildMemberAdd', member => {   ///Toxic Codes
+    let channel = member.guild.channels.find('name', 'welcome');
+    let memberavatar = member.user.avatarURL
+      if (!channel) return; 
+    let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField('🎽 | name :  ',${member})
+        .addField('📢 | نورت السيرفر ي قلبي' , Welcome to the server, ${member})
+        .addField('🆔 | user :', "[" + ${member.id} + "]" )
+                .addField('➡| انت العضو رقم',${member.guild.memberCount})
+
+                  .addField("Name:",<@ + ${member.id} + >, true)
+
+                                     .addField(' الـسيرفر', ${member.guild.name},true)
+
+     .setFooter("Grax")
+        .setTimestamp()
+
+      channel.sendEmbed(embed);
+    });   ///Toxic Codes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 client.on('message', message => {
   if (true) {
