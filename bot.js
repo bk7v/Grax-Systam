@@ -1328,7 +1328,7 @@ client.on('message', message => { ///Toxic Codes
 lient.on('guildMemberAdd', member => {   ///Toxic Codes
     let channel = member.guild.channels.find('name', 'welcome');
     let memberavatar = member.user.avatarURL
-      if (!channel) return; 
+      if (channel) return; 
     let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setThumbnail(memberavatar)
