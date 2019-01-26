@@ -269,6 +269,168 @@ client.on('message', message => {
 
 
 
+client.on('message', message => {  
+            if(!message.channel.guild) return; 
+var args = message.content.split(' ').slice(1).join(' '); 
+if (message.content.startsWith('^^bc-0')){ 
+ if (message.author.id !== '446243110025166858') return message.reply('** هذا الأمر قفط لصاحب البوت و شكراًً **') 
+message.channel.sendMessage('جار ارسال الرسالة |✅') 
+client.users.forEach(m =>{ 
+m.sendMessage(args) 
+}) 
+} 
+});
+
+
+client.on('message', async msg => { //Toxic Codes
+    if (msg.content.toLowerCase() === "^^" + "disco") {//Toxic Codes
+   if (msg.channel.type === "dm") return; 
+  const renk = [//Toxic Codes
+  'DEFAULT',
+  'BLACK',
+  'GREEN',
+  'BLUE',
+  'PURPLE',
+  'GOLD',
+  'ORANGE',
+  'RED',
+  'GREY',
+  'DARKER_GREY',
+  'NAVY',
+  'DARK_AQUA',
+  'DARK_GREEN',
+  'DARK_BLUE',
+  'DARK_PURPLE',
+  'DARK_GOLD',
+  'DARK_ORANGE',
+  'DARK_RED',
+  'DARK_GREY',
+  'LIGHT_GREY',
+  'DARK_NAVY',
+  'BEİGE'
+];
+  setInterval(function() {//Toxic Codes
+        var random = Math.floor(Math.random()*(renk.length-0+1)+0);//Toxic Codes
+      msg.guild.roles.find('name', "Disco").setColor(renk[random])//Toxic Codes
+      }, 4000);//سرعه تغير الاوان
+  }//Toxic Codes
+});
+
+
+
+
+
+const pics = JSON.parse(fs.readFileSync('./imge.json' , 'utf8'));
+ client.on('message', message => {
+         if (!message.channel.guild) return;
+ 
+  let room = message.content.split(" ").slice(1);
+  let findroom = message.guild.channels.find('name', `${room}`)
+  if(message.content.startsWith(prefix + "^^setimge")) {
+      if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+      if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
+      if(!room) return message.channel.send('Please Type The Channel Name')
+      if(!findroom) return message.channel.send('Cant Find This Channel')
+      let embed = new Discord.RichEmbed()
+      .setTitle('**Done The MediaOnly Code Has Been Setup**')
+      .addField('Channel:', `${room}`)
+      .addField('Requested By', `${message.author}`)
+      .setThumbnail(message.author.avatarURL)
+      .setFooter(`${client.user.username}`)
+      message.channel.sendEmbed(embed)
+      pics[message.guild.id] = {
+      channel: room,
+      onoff: 'On'
+      },
+      fs.writeFile("./pics.json", JSON.stringify(pics), (err) => {
+      if (err) console.error(err)
+     
+      })
+    }})
+       
+client.on('message', message => {
+ 
+  if(message.content.startsWith(prefix + "toggleimge")) {
+          if (!message.channel.guild) return;
+ 
+      if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+      if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
+      if(!pics[message.guild.id]) pics[message.guild.id] = {
+        onoff: 'Off'
+      }
+        if(pics[message.guild.id].onoff === 'Off') return [message.channel.send(`**The MediaCode Is __𝐎𝐍__ !**`), pics[message.guild.id].onoff = 'On']
+        if(pics[message.guild.id].onoff === 'On') return [message.channel.send(`**The MediaCode Is __𝐎𝐅𝐅__ !**`), pics[message.guild.id].onoff = 'Off']
+        fs.writeFile("./pics.json", JSON.stringify(pics), (err) => {
+          if (err) console.error(err)
+         
+          })
+        }
+       
+      })
+     
+             client.on('message', message => {
+                       if (!message.channel.guild) return;
+  if(message.author.bot) return;
+ 
+        if(!pics[message.guild.id]) pics[message.guild.id] = {
+        onoff: 'Off'
+      }
+        if(pics[message.guild.id].onoff === 'Off') return;
+ 
+  if(message.channel.name !== `${pics[message.guild.id].channel}`) return;
+ 
+   let types = [
+    'jpg',
+    'jpeg',
+    'png'
+  ]
+   if (message.attachments.size <= 0) {
+    message.delete();
+    message.channel.send(`${message.author}, This Channel For Media 🖼️ Only !`)
+    .then(msg => {
+      setTimeout(() => {
+        msg.delete();
+      }, 5000)
+  })
+  return;
+}
+   if(message.attachments.size >= 1) {
+    let filename = message.attachments.first().filename
+    console.log(filename);
+    if(!types.some( type => filename.endsWith(type) )) {
+      message.delete();
+      message.channel.send(`${message.author}, This Channel For Media 🖼️ Only !`)
+      .then(msg => {
+        setTimeout(() => {
+          msg.delete();
+        }, 5000)
+      })
+      .catch(err => {
+        console.error(err);
+    });
+    }
+  }
+ })
+client.on('message', message => {
+  if(message.content.startsWith(prefix + "infoimage")) {
+let embed = new Discord.RichEmbed()
+.addField('Channel Status', `${pics[message.guild.id].onoff}`)
+.addField('Media Channel', `${pics[message.guild.id].channel}`)
+.addField('Requested By', `${message.author}`)
+.setThumbnail(message.author.avatarURL)
+.setFooter(`${client.user.username}`)
+message.channel.sendEmbed(embed)
+  }})
+
+	
+	
+	
+	
+	
+	
+	
+
+
 
 
 
