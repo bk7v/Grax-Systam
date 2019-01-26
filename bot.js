@@ -1806,7 +1806,7 @@ client.on('message', message => {
 
 const Discord = require('discord.js');
 const Baron = new Discord.Client();
-const prefix = '$';
+ver prefix = '$';
 Baron.on("ready", ()=>{
 Baron.user.setActivity('Baron#1500 Development', {type : 'watching'});
 console.log('Loding')
