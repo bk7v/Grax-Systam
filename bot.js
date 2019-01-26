@@ -320,7 +320,6 @@ client.on('message', async msg => { //Toxic Codes
 
 
 
-const pics = JSON.parse(fs.readFileSync('./imge.json' , 'utf8'));
  client.on('message', message => {
          if (!message.channel.guild) return;
  
