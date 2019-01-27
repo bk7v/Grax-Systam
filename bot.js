@@ -59,6 +59,26 @@ client.on("message", message => {
 });
 
 
+client.on('message', message => {    ///Toxic Codes
+            if (message.content.startsWith("^^rules")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     اولا ' ,' ممنوع السب ')
+.addField('     ثانيا ' ,' لا تسوي سبام  ')
+.addField('     ثالثا ' ,' لا تزعج الاخرين ')
+.addField('    رابعا' ,' ممنوع الاعلانات ')
+.addField('    خامسا' ,' احترم الاخرين ')
+.addField('    سادسا' ,' لا تنشر في الشات او بل خاص ')    ///Toxic Codes
+.addField('    سابعا' ,' لا تنشر روابط! ')
+.addField('    ثامنا' ,' لا تسوي سبام ايموجي ')
+.addField('    تاسعا' ,' لا تطلب رتبه الاداره ! ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);   ///Toxic Codes
+    }  
+});    ///Toxic Codes
+
+
+
 
 
 client.on('guildCreate', guild => {
@@ -118,7 +138,7 @@ let reportembed = new Discord.RichEmbed()
 .addField("Reason",`${reason}`)
 
 
-let reportchannel = msg.guild.channels.find(`name`,"reports")
+let reportchannel = msg.guild.channels.find(`name`,"report")
 if(!reportchannel) return msg.channel.send("Couldn't find `report` channel. ")
 
 msg.delete().catch(O_o=>{});
