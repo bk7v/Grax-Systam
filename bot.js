@@ -1776,18 +1776,6 @@ client.on('message', message => {
 
 var prefix = "^^"
 client.on('ready', () => {
-client.user.setActivity('Baron#1500 Development', {type : 'watching'});
-console.log('Loding')
-setTimeout(() => {
-  console.log('Loding.')//Baron#1500
-}, 500)
-setTimeout(() => {
-  console.log('Loding..')//Baron#1500
-}, 1000)
-setTimeout(() => {
-  console.log('Loding...')//Baron#1500
-}, 1500)
-setTimeout(() => {
   console.log(`Logged as ${client.user.tag}`)//Baron#1500
 }, 2000)
 })
