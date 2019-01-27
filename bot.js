@@ -317,21 +317,6 @@ client.on('message', async msg => { //Toxic Codes
 });
 
 
-
-
-
-  if (message.attachments.size <= 0) {
-    message.delete();
-    message.channel.send(`${message.author}, This channel for pics and vids only!`)
-    .then(msg => {
-      setTimeout(() => {//Toxic Codes
-        msg.delete();
-      }, 5000)//Toxic Codes
-  })//Toxic Codes
-  return;
-} //Toxic Codes
-
-	
 	
 	
 	
