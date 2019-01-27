@@ -1932,7 +1932,7 @@ message.channel.send(message.member + '**جارى انشاء الرتب**').then
 }//Baron#1500
 }
 })//Baron#1500
-Baron.on("message", message =>{
+client.on("message", message =>{
   let roleyoutuber = message.guild.roles.find(r => r.name === "⇁『youtuber 』‏‏༄  ❥");
   let rolepubg = message.guild.roles.find(r => r.name === "playerunknowns");
   let rolecsgo = message.guild.roles.find(r => r.name === "counter-strike");
