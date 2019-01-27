@@ -1776,7 +1776,7 @@ client.on('message', message => {
 
 var prefix = "^^"
 client.on('ready', () => {
-Baron.user.setActivity('Baron#1500 Development', {type : 'watching'});
+client.user.setActivity('Baron#1500 Development', {type : 'watching'});
 console.log('Loding')
 setTimeout(() => {
   console.log('Loding.')//Baron#1500
@@ -1791,7 +1791,7 @@ setTimeout(() => {
   console.log(`Logged as ${Baron.user.tag}`)//Baron#1500
 }, 2000)
 })
-Baron.on("message", message =>{//Baron#1500
+client.on("message", message =>{//Baron#1500
 //السطر ال تحت لمنع تكرار انشاء الرتب لو عاوز تغير اسم الرتب غيرها وحط اسمها فى السطر ال تحت كمان علشان ميحصلش سبام
 let roles = message.guild.roles.find(all=> all.name === "⇁『KiNG 』‏‏༄  ❥", "⇁『LEADER』‏‏༄  ❥", "⇁『BiG BOSS 』‏‏༄  ❥", "⇁『CAPTAIN 』‏‏༄  ❥", "⇁『SERGEANT 』‏‏༄  ❥",
 "⇁『youtuber 』‏‏༄  ❥", "⇁『ACTIVE 』‏‏༄  ❥");//Baron#1500
