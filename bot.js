@@ -1788,7 +1788,7 @@ setTimeout(() => {
   console.log('Loding...')//Baron#1500
 }, 1500)
 setTimeout(() => {
-  console.log(`Logged as ${Baron.user.tag}`)//Baron#1500
+  console.log(`Logged as ${member.user.tag}`)//Baron#1500
 }, 2000)
 })
 client.on("message", message =>{//Baron#1500
