@@ -2206,5 +2206,4 @@ ch.setUserLimit(15)
 
 
 
- 
 client.login(process.env.BOT_TOKEN);
