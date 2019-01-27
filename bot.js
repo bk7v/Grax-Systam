@@ -1775,7 +1775,7 @@ client.on('message', message => {
  
 
 var prefix = "^^"
-Baron.on("ready", ()=>{
+client.on('ready', () => {
 Baron.user.setActivity('Baron#1500 Development', {type : 'watching'});
 console.log('Loding')
 setTimeout(() => {
