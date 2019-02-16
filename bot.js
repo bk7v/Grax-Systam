@@ -571,7 +571,6 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
 
 
 
-const fs = require('fs')
 const p = {}
 const devs = ['446243110025166858']
 client.on('message', message => {
