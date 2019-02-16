@@ -1,14 +1,14 @@
 const Discord = require('discord.js');
 const ms = require("ms");
 const bot = new Discord.Client({disableEveryone: true});
-const Canvas = require('canvas') 
+const Canvas = require('canvas') ;
 const fs = module.require("fs"); 
 const r1 = require('snekfetch');
-const moment2 = require('moment-duration-format'),
-jimp = require('jimp'),
+const moment2 = require('moment-duration-format');
+const jimp = require('jimp');
 
 const client = new Discord.Client();
-const prefix = '&'
+const prefix = '&';
  
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
