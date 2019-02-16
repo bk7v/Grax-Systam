@@ -12,6 +12,7 @@
     "dateformat": "^3.0.3",
     "discord.js": "^11.3.2",
     "express": "^4.16.3",
+    "moment-duration-format": "^2.2.2",
     "ffmpeg": "0.0.4",
     "ffmpeg-binaries": "^3.2.2-3",
     "fs": "0.0.2",
