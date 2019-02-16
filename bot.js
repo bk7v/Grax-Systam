@@ -1070,7 +1070,6 @@ client.on("guildMemberAdd", member => {
 
     })
 
-    const devs = ['489342754887827487'];
 
 client.on('message', message => {
     let argresult = message.content.split(` `).slice(1).join(' ');
