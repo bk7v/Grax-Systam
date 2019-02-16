@@ -5,7 +5,6 @@ const Canvas = require('canvas')
 const fs = module.require("fs"); 
 const r1 = require('snekfetch');
   let moment2 = require('moment-duration-format'),
- const moment = require("moment")
  const jimp = require('jimp')
 
 const client = new Discord.Client();
