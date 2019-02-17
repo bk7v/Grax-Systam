@@ -37,6 +37,42 @@ client.user.setGame(`&help|By bk7`,"http://twitch.tv/S-F")
 });
 
 
+client.on('guildCreate', guild => {
+  var embed = new Discord.RichEmbed()
+  .setColor(0x5500ff)
+  .setDescription(`**شكراً لك لإضافه البوت الى سيرفرك LionBot THE BEST**`)
+      guild.owner.send(embed)
+});
+
+
+
+
+client.on("guildMemberAdd", (member) => {
+client.channels.get('546649311614730241').edit({name : `『 الأعضاء ↩ ${member.guild.memberCount} 』`});
+})
+client.on("guildMemberRemove", (member) => {
+client.channels.get('546649311614730241').edit({name : `『 الأعضاء ↩ ${member.guild.memberCount} 』`});
+})
+
+
+
+
+
+client.on("guildMemberAdd", member => {
+  member.createDM().then(function (channel) {
+  return channel.send(`**:rose:  ولكم نورت السيرفر:rose: 
+:crown:اسم العضو  ${member}:crown:  
+انت العضو رقم ${member.guild.memberCount}** `) 
+}).catch(console.error)
+})
+	
+
+
+
+
+
+
+
 
 
 const seender = 'لعمل منشن لمرسل الرساله قم بكتابة [المرسل] في الرسالة.';
@@ -106,7 +142,7 @@ client.on('message', message => {
  
   let args = message.content.split(" ").slice(1);
  
-  if (command == "&ban") {
+  if (command == "ban") {
                if(!message.channel.guild) return message.reply('** This command only for servers**');
          
   if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
@@ -146,7 +182,7 @@ client.on('message', message => {
  
   let args = message.content.split(" ").slice(1);
  
-  if (command == "&kick") {
+  if (command == "kick") {
                if(!message.channel.guild) return message.reply('** This command only for servers**');
          
   if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**You Don't Have ` KICK_MEMBERS ` Permission**");
@@ -186,7 +222,7 @@ client.on('message', msg => {
   command = command.slice(prefix.length);
   let args = msg.content.split(" ").slice(1);
  
-    if(command === "&clear") {
+    if(command === "clear") {
         const emoji = client.emojis.find("name", "wastebasket")
     let textxt = args.slice(0).join("");
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
@@ -262,67 +298,14 @@ client.on('message', message => {
 
 
 
-client.on('message', message => {
-    if (message.content.startsWith(prefix + "help")) {
-let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField('     **&help-1** ' ,' **اوامر اداريه** ')
-.addField('     **&help-2**  ' ,' **اوامر عامه** ')
-.addField('     **في الترحيب بل خاص من تدخل البوت الي سيرفرك يتفعل** ')
-.setColor('RANDOM')
-message.channel.sendEmbed(embed);
-}
-});
-
-
-client.on('message', message => {
-    if (message.content.startsWith(prefix + "help-1")) {
-let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField('     **&clear** ' ,' **مسح الشات** ')
-.addField('     **&bc**  ' ,' **برودكاست** ')
-.addField('     **&ban**  ' ,' **يبند الشخص** ')
-.addField('     **&kick**  ' ,' **يطرد الشخص** ')
-.addField('     **&mutechannel**  ' ,' **تقفيل الشات** ')
-.addField('     **&unmutechannel**  ' ,' **فتح الشات** ')
-.addField('     **&mute**  ' ,' **اعطاء ميوت** ')
-.addField('     **&unmute**  ' ,' **فك الميوت** ')
-.addField('     **&setprefix**  ' ,' **وضع برفكس** ')
-.addField('     **&giveaway**  ' ,' **قيف اواي** ')
-.addField('     **&unmutechannel**  ' ,' **فتح الشات** ')
 
 
 
 
 
-.setColor('RANDOM')
-message.channel.sendEmbed(embed);
-}
-});
 
 
 
-
-
-client.on('message', message => {
-    if (message.content.startsWith(prefix + "help-2")) {
-let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField('     **&bot** ' ,' **معلومات البوت** ')
-.addField('     **&topinv**  ' ,' **افضل ناس يدخلون الناس للسيرفر** ')
-.addField('     **&ping**  ' ,' **البنق ** ')
-.addField('     **&avatar**  ' ,' **يظهر صورتك** ')
-.addField('     **&mylook**  ' ,' **معلوماتك** ')
-.addField('     **&bc**  ' ,' **برودكاست** ')
-
-
-
-
-
-.setColor('RANDOM')
-message.channel.sendEmbed(embed);
-}
-});
 
 
 
@@ -423,7 +406,7 @@ client.on('message',async message => {
     let createdAt = moment(client.user.createdAt).fromNow();
 
 let m = await message.channel.send(`\`\`\`asciidoc\n= Normal Information =
-Creator :: ${client.users.get("ايديك").username} - ${createdAt}
+Creator :: ${client.users.get("446243110025166858").username} - ${createdAt}
 Ping :: ${client.pings[0]} ms
 UpTime :: ${upTime}
 
