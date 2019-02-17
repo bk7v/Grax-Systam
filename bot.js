@@ -57,6 +57,7 @@ if (message.content.startsWith(prefix + 'help')) { //DiamondCodes - [ X_KillerYT
 『&bot / لرؤية معلومات عن البوت 』
 『&report / لرفع شكوى على عضو 』
 『&sug / لتسوي اقتراح للسيرفر 』
+『 قران | لتشغيل القران الكريم& 』
 **
   `
 ,`
