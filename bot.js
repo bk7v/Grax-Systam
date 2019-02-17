@@ -198,7 +198,7 @@ client.on('guildCreate', guild => {
   Member Count: __${guild.memberCount}__
   Servers Counter : __${client.guilds.size}__**`)
           .setColor('#36393e')
-          .setFooter('Narox' , client.user.avatarURL)
+          .setFooter('LionBot' , client.user.avatarURL)
          client.users.get("446243110025166858").send({LionBot});
 })
  
@@ -206,8 +206,7 @@ client.on('guildDelete', guild => {
    
   client.users.get("446243110025166858")
 
-  const Dark&Narox = new Discord.RichEmbed()
-  .setAuthor(`Narox Bot. left a server ❎`)
+  .setAuthor(`LionBot. left a server ❎`)
   .setDescription(`**
  Server name: __${guild.name}__
  Server id: __${guild.id}__
@@ -215,7 +214,7 @@ client.on('guildDelete', guild => {
  Members Count: __${guild.memberCount}__
  Servers Counter : __${client.guilds.size}__**`)
          .setColor('#36393e')
-         .setFooter('Narox' , client.user.avatarURL)
+         .setFooter('LionBot' , client.user.avatarURL)
          client.users.get("446243110025166858").send({LionBot});
  
 });
