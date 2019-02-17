@@ -190,7 +190,6 @@ client.on('message', message => {
 client.on('guildCreate', guild => {
    
   client.users.get("446243110025166858")
-    const Dark&Narox = new Discord.RichEmbed()
     .setAuthor(`بوتك دخل سيرفر جديد مبروك ✅`)
     .setDescription(`**
   Server name: __${guild.name}__
@@ -200,7 +199,7 @@ client.on('guildCreate', guild => {
   Servers Counter : __${client.guilds.size}__**`)
           .setColor('#36393e')
           .setFooter('Narox' , client.user.avatarURL)
-         client.users.get("ايدي حقك").send({Dark&Narox});
+         client.users.get("446243110025166858").send({LionBot});
 })
  
 client.on('guildDelete', guild => {
@@ -217,7 +216,7 @@ client.on('guildDelete', guild => {
  Servers Counter : __${client.guilds.size}__**`)
          .setColor('#36393e')
          .setFooter('Narox' , client.user.avatarURL)
-         client.users.get("446243110025166858").send({Dark&Narox});
+         client.users.get("446243110025166858").send({LionBot});
  
 });
 
